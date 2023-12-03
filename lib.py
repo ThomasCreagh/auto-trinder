@@ -3,15 +3,15 @@ from pilmoji import Pilmoji
 import textwrap
 
 class TrinderImage:
-    def __init__(self, text, background_image_path, font_file_path,
-                file_save_name, image_width=1097, image_heigth=1080):
-        self.IMAGE_HEIGTH = image_heigth
-        self.IMAGE_WIDTH = image_width
+    def __init__(self, text, background_image_path,
+                 font_file_path, file_save_name):
+        image = Image.open(background_image_path)
+        self.IMAGE_HEIGTH, self.IMAGE_WIDTH = image.size
         self.TEXT_LENGTH = len(text)
 
-        self.MAX_TEXTBOX_HEIGTH = self.IMAGE_HEIGTH//2
-        self.MAX_TEXTBOX_WIDTH = self.IMAGE_WIDTH//1.25
-        self.MAX_FONT_SIZE = 100
+        self.MAX_TEXTBOX_HEIGTH = self.IMAGE_HEIGTH//1.5
+        self.MAX_TEXTBOX_WIDTH = self.IMAGE_WIDTH//1.2
+        self.MAX_FONT_SIZE = 200
         self.TEXT_PADDING = 6
 
         self.font_size = self.get_font_size()
@@ -58,7 +58,6 @@ class TrinderImage:
         font = ImageFont.truetype(font_file_path, self.font_size) # data/Arial.ttf
 
         current_heigth = self.get_start_heigth()
-        print(self.font_size)
         font_heigth = self.font_size
         for line in paragraph:
             line_width = draw.textlength(line, font=font)
