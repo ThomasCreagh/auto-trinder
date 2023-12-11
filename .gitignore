@@ -162,5 +162,3 @@ cython_debug/
 
 auto-trinder-e79abbfcea61.json
 .env
-output/
-bad_output/
